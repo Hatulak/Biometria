@@ -1,0 +1,176 @@
+JFDML JFormDesigner: "6.0.6.2.195" Java: "1.8.0_152-release" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq {comp changeColorPanel:::p::p, space :::p, comp scrollPane1::::1016:x, space :::p}}"
+				"$verticalGroup": "par l {seq {par l {comp changeColorPanel:::p:731:p, comp scrollPane1:::p:753:p}, space :::x}}"
+			} ) {
+				name: "mainPanel"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {seq {space :::p, par l {seq l {space :p:6:p, par l:::p {comp label9::l:p::p, seq l {comp label14:::p::p, space :::p, comp colorGTextField:::::x}, seq l {comp label15:::p::p, space :::p, comp colorBTextField:::::x}, seq l {comp label13:::p::p, space :::p, comp colorRTextField:::::x}, seq l {comp label10:::p::p, space :::p, comp mouseXPositionLabel:::::x}, seq l {comp label11:::p::p, space :::p, comp mouseYPositionLabel:::::x}, comp label12::l:p::p}}, comp changeColorButton:::p:85:p, comp enlightenButton::l:p:85:p, comp enlightenByLogarithmButton::l:p:85:p, comp dimByPowerButton::l:p:85:p, comp dimByLogarithmButton::l:p::p, comp backToOriginalImageButton::l:p:85:p}, space ::9:x}}"
+					"$verticalGroup": "par l {seq l {space :::p, comp label9:::p::p, par l {seq {space :p:8:p, comp label10:::p::p}, seq {space :p:6:p, comp mouseXPositionLabel:::p::p}}, space :::p, par l {comp label11:::p::p, comp mouseYPositionLabel:::p::p}, space u:::p, comp label12:::p::p, space :::p, par b {comp label13::b:p::p, comp colorRTextField::b:p::p}, space :::p, par b {comp label14::b:p::p, comp colorGTextField::b:p::p}, space :::p, par b {comp label15::b:p::p, comp colorBTextField::b:p::p}, space :::p, comp changeColorButton:::p::p, space u:::p, comp enlightenButton:::p::p, space :::p, comp enlightenByLogarithmButton:::p::p, space :::p, comp dimByPowerButton:::p::p, space :::p, comp dimByLogarithmButton:::p::p, space s:::p, comp backToOriginalImageButton:::p::p, space ::373:x}}"
+				} ) {
+					name: "changeColorPanel"
+					"preferredSize": new java.awt.Dimension( 100, 0 )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label9"
+						"text": "Mouse Position:"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label10"
+						"text": "X:"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "mouseXPositionLabel"
+						"text": "text"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label11"
+						"text": "Y:"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "mouseYPositionLabel"
+						"text": "text"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label12"
+						"text": "Pixel Properties"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label13"
+						"text": "R:"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "colorRTextField"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label14"
+						"text": "G:"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "colorGTextField"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label15"
+						"text": "B:"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "colorBTextField"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "changeColorButton"
+						"text": "Change"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "enlightenButton"
+						"text": "Enlighten"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "enlightenByLogarithmButton"
+						"text": "Enli by Log"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "dimByPowerButton"
+						"text": "Dim"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "dimByLogarithmButton"
+						"text": "Dim by Log"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "backToOriginalImageButton"
+						"text": "Original"
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+					name: "scrollPane1"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "imageLabel"
+						"verticalAlignment": 1
+						"alignmentY": 0.0f
+					} )
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+			menuBar: new FormContainer( "javax.swing.JMenuBar", new FormLayoutManager( class javax.swing.JMenuBar ) ) {
+				name: "menuBar"
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "files"
+					"text": "File"
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "loadImage"
+						"text": "Load Image"
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "saveImage"
+						"text": "Save Image"
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "histograms"
+					"text": "Histograms"
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "createHistogram"
+						"text": "Create Histograms"
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "strechHistograms"
+						"text": "Strech Histograms"
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "equalizeHistograms"
+						"text": "Equalize Histograms"
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "menu1"
+					"text": "Image"
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "grayScaleFromRed"
+						"text": "Gray Scale from Red"
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "grayScaleFromGreen"
+						"text": "Gray Scale from Green"
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "grayScaleFromBlue"
+						"text": "Gray Scale from Blue"
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "grayScaleFromAvg"
+						"text": "Gray Scale from Avg"
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "menu2"
+					"text": "Binarization"
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "bernsenMethod"
+						"text": "Bernsen method"
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "manualBinarization"
+						"text": "Manual Binarization"
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "otsuMethod"
+						"text": "Otsu method"
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "niblackMethod"
+						"text": "Niblack method"
+					} )
+				} )
+			}
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 1130, 785 )
+		} )
+	}
+}
