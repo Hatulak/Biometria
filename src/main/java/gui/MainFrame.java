@@ -5,6 +5,7 @@
 package gui;
 
 import binarization.Binarization;
+import filtration.Filtration;
 import histograms.HistogramsOperations;
 import shared.ImageSharedOperations;
 
@@ -276,7 +277,40 @@ public class MainFrame extends JFrame {
             originalImage = ImageSharedOperations.toBufferedImage(resizedImage);
             imageLabel.setIcon(new ImageIcon(resizedImage));
         });
+        customMaskFiltration.addActionListener((ActionEvent e) -> {
 
+            int[][] mask = new int[3][3];
+            mask[0][0] = Integer.parseInt(maskTF00.getText());
+            mask[0][1] = Integer.parseInt(maskTF01.getText());
+            mask[0][2] = Integer.parseInt(maskTF02.getText());
+            mask[1][0] = Integer.parseInt(maskTF10.getText());
+            mask[1][1] = Integer.parseInt(maskTF11.getText());
+            mask[1][2] = Integer.parseInt(maskTF12.getText());
+            mask[2][0] = Integer.parseInt(maskTF20.getText());
+            mask[2][1] = Integer.parseInt(maskTF21.getText());
+            mask[2][2] = Integer.parseInt(maskTF22.getText());
+
+            resizedImage = Filtration.filterImageCustomMask(ImageSharedOperations.toBufferedImage(resizedImage), mask);
+
+            originalImage = ImageSharedOperations.toBufferedImage(resizedImage);
+            imageLabel.setIcon(new ImageIcon(resizedImage));
+        });
+
+        kuwaharaFiltration.addActionListener((ActionEvent e) -> {
+            resizedImage = Filtration.kuwaharaFilter(ImageSharedOperations.toBufferedImage(resizedImage));
+            originalImage = ImageSharedOperations.toBufferedImage(resizedImage);
+            imageLabel.setIcon(new ImageIcon(resizedImage));
+        });
+        median3x3Filtration.addActionListener((ActionEvent e) -> {
+            resizedImage = Filtration.median3x3Filter(ImageSharedOperations.toBufferedImage(resizedImage));
+            originalImage = ImageSharedOperations.toBufferedImage(resizedImage);
+            imageLabel.setIcon(new ImageIcon(resizedImage));
+        });
+        median5x5Filtration.addActionListener((ActionEvent e) -> {
+            resizedImage = Filtration.median5x5Filter(ImageSharedOperations.toBufferedImage(resizedImage));
+            originalImage = ImageSharedOperations.toBufferedImage(resizedImage);
+            imageLabel.setIcon(new ImageIcon(resizedImage));
+        });
     }
 
     private void createUIComponents() {
@@ -304,6 +338,11 @@ public class MainFrame extends JFrame {
         manualBinarization = new JMenuItem();
         otsuMethod = new JMenuItem();
         niblackMethod = new JMenuItem();
+        menu3 = new JMenu();
+        customMaskFiltration = new JMenuItem();
+        kuwaharaFiltration = new JMenuItem();
+        median3x3Filtration = new JMenuItem();
+        median5x5Filtration = new JMenuItem();
         mainPanel = new JPanel();
         changeColorPanel = new JPanel();
         label9 = new JLabel();
@@ -324,6 +363,15 @@ public class MainFrame extends JFrame {
         dimByPowerButton = new JButton();
         dimByLogarithmButton = new JButton();
         backToOriginalImageButton = new JButton();
+        maskTF00 = new JTextField();
+        maskTF10 = new JTextField();
+        maskTF20 = new JTextField();
+        maskTF01 = new JTextField();
+        maskTF11 = new JTextField();
+        maskTF21 = new JTextField();
+        maskTF02 = new JTextField();
+        maskTF12 = new JTextField();
+        maskTF22 = new JTextField();
         scrollPane1 = new JScrollPane();
         imageLabel = new JLabel();
 
@@ -409,6 +457,28 @@ public class MainFrame extends JFrame {
                 menu2.add(niblackMethod);
             }
             menuBar.add(menu2);
+
+            //======== menu3 ========
+            {
+                menu3.setText("Filtration");
+
+                //---- customMaskFiltration ----
+                customMaskFiltration.setText("Custom Mask");
+                menu3.add(customMaskFiltration);
+
+                //---- kuwaharaFiltration ----
+                kuwaharaFiltration.setText("Kuwahara");
+                menu3.add(kuwaharaFiltration);
+
+                //---- median3x3Filtration ----
+                median3x3Filtration.setText("Median 3x3");
+                menu3.add(median3x3Filtration);
+
+                //---- median5x5Filtration ----
+                median5x5Filtration.setText("Median 5x5");
+                menu3.add(median5x5Filtration);
+            }
+            menuBar.add(menu3);
         }
         setJMenuBar(menuBar);
 
@@ -491,30 +561,48 @@ public class MainFrame extends JFrame {
                                                                 .addGroup(changeColorPanelLayout.createSequentialGroup()
                                                                         .addComponent(label14)
                                                                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                                        .addComponent(colorGTextField))
+                                                                        .addComponent(colorGTextField, GroupLayout.DEFAULT_SIZE, 1, Short.MAX_VALUE))
                                                                 .addGroup(changeColorPanelLayout.createSequentialGroup()
                                                                         .addComponent(label15)
                                                                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                                        .addComponent(colorBTextField))
+                                                                        .addComponent(colorBTextField, GroupLayout.DEFAULT_SIZE, 1, Short.MAX_VALUE))
                                                                 .addGroup(changeColorPanelLayout.createSequentialGroup()
                                                                         .addComponent(label13)
                                                                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                                        .addComponent(colorRTextField))
+                                                                        .addComponent(colorRTextField, GroupLayout.DEFAULT_SIZE, 1, Short.MAX_VALUE))
                                                                 .addGroup(changeColorPanelLayout.createSequentialGroup()
                                                                         .addComponent(label10)
                                                                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                                        .addComponent(mouseXPositionLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                                        .addComponent(mouseXPositionLabel, GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
                                                                 .addGroup(changeColorPanelLayout.createSequentialGroup()
                                                                         .addComponent(label11)
                                                                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                                        .addComponent(mouseYPositionLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                                        .addComponent(mouseYPositionLabel, GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
                                                                 .addComponent(label12)))
                                                 .addComponent(changeColorButton, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(enlightenButton, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(enlightenByLogarithmButton, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(dimByPowerButton, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(dimByLogarithmButton)
-                                                .addComponent(backToOriginalImageButton, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(backToOriginalImageButton, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(changeColorPanelLayout.createSequentialGroup()
+                                                        .addComponent(maskTF00, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+                                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(maskTF10, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+                                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(maskTF20, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(changeColorPanelLayout.createSequentialGroup()
+                                                        .addComponent(maskTF01, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+                                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(maskTF11, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+                                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(maskTF21, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(changeColorPanelLayout.createSequentialGroup()
+                                                        .addComponent(maskTF02, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+                                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(maskTF12, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+                                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(maskTF22, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)))
                                         .addContainerGap(9, Short.MAX_VALUE))
                 );
                 changeColorPanelLayout.setVerticalGroup(
@@ -559,7 +647,22 @@ public class MainFrame extends JFrame {
                                         .addComponent(dimByLogarithmButton)
                                         .addGap(18, 18, 18)
                                         .addComponent(backToOriginalImageButton)
-                                        .addContainerGap(373, Short.MAX_VALUE))
+                                        .addGap(51, 51, 51)
+                                        .addGroup(changeColorPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                .addComponent(maskTF00, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(maskTF10, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(maskTF20, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(changeColorPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                .addComponent(maskTF01, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(maskTF11, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(maskTF21, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(changeColorPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                .addComponent(maskTF02, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(maskTF12, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(maskTF22, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                        .addContainerGap(250, Short.MAX_VALUE))
                 );
             }
 
@@ -617,6 +720,11 @@ public class MainFrame extends JFrame {
     private JMenuItem manualBinarization;
     private JMenuItem otsuMethod;
     private JMenuItem niblackMethod;
+    private JMenu menu3;
+    private JMenuItem customMaskFiltration;
+    private JMenuItem kuwaharaFiltration;
+    private JMenuItem median3x3Filtration;
+    private JMenuItem median5x5Filtration;
     private JPanel mainPanel;
     private JPanel changeColorPanel;
     private JLabel label9;
@@ -637,6 +745,15 @@ public class MainFrame extends JFrame {
     private JButton dimByPowerButton;
     private JButton dimByLogarithmButton;
     private JButton backToOriginalImageButton;
+    private JTextField maskTF00;
+    private JTextField maskTF10;
+    private JTextField maskTF20;
+    private JTextField maskTF01;
+    private JTextField maskTF11;
+    private JTextField maskTF21;
+    private JTextField maskTF02;
+    private JTextField maskTF12;
+    private JTextField maskTF22;
     private JScrollPane scrollPane1;
     private JLabel imageLabel;
     // JFormDesigner - End of variables declaration  //GEN-END:variables

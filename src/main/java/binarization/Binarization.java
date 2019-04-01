@@ -182,7 +182,7 @@ public class Binarization {
                     }
                 }
                 int mid_gray = (min.getRed() + max.getRed()) / 2;
-                int local_contrast = (max.getRed() - min.getRed()) / 2;
+                int local_contrast = max.getRed() - min.getRed();
                 Color c = new Color(img.getRGB(i, j));
                 if (local_contrast < contrast_threshold)
                     clonedImage.setRGB(i, j, mid_gray >= set_threshold ? Color.WHITE.getRGB() : Color.BLACK.getRGB());

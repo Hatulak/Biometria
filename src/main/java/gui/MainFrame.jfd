@@ -11,8 +11,8 @@ new FormModel {
 			} ) {
 				name: "mainPanel"
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq {space :::p, par l {seq l {space :p:6:p, par l:::p {comp label9::l:p::p, seq l {comp label14:::p::p, space :::p, comp colorGTextField:::::x}, seq l {comp label15:::p::p, space :::p, comp colorBTextField:::::x}, seq l {comp label13:::p::p, space :::p, comp colorRTextField:::::x}, seq l {comp label10:::p::p, space :::p, comp mouseXPositionLabel:::::x}, seq l {comp label11:::p::p, space :::p, comp mouseYPositionLabel:::::x}, comp label12::l:p::p}}, comp changeColorButton:::p:85:p, comp enlightenButton::l:p:85:p, comp enlightenByLogarithmButton::l:p:85:p, comp dimByPowerButton::l:p:85:p, comp dimByLogarithmButton::l:p::p, comp backToOriginalImageButton::l:p:85:p}, space ::9:x}}"
-					"$verticalGroup": "par l {seq l {space :::p, comp label9:::p::p, par l {seq {space :p:8:p, comp label10:::p::p}, seq {space :p:6:p, comp mouseXPositionLabel:::p::p}}, space :::p, par l {comp label11:::p::p, comp mouseYPositionLabel:::p::p}, space u:::p, comp label12:::p::p, space :::p, par b {comp label13::b:p::p, comp colorRTextField::b:p::p}, space :::p, par b {comp label14::b:p::p, comp colorGTextField::b:p::p}, space :::p, par b {comp label15::b:p::p, comp colorBTextField::b:p::p}, space :::p, comp changeColorButton:::p::p, space u:::p, comp enlightenButton:::p::p, space :::p, comp enlightenByLogarithmButton:::p::p, space :::p, comp dimByPowerButton:::p::p, space :::p, comp dimByLogarithmButton:::p::p, space s:::p, comp backToOriginalImageButton:::p::p, space ::373:x}}"
+					"$horizontalGroup": "par l {seq {space :::p, par l {seq l {space :p:6:p, par l:::p {comp label9::l:p::p, seq l {comp label14:::p::p, space :::p, comp colorGTextField::::0:x}, seq l {comp label15:::p::p, space :::p, comp colorBTextField::::0:x}, seq l {comp label13:::p::p, space :::p, comp colorRTextField::::0:x}, seq l {comp label10:::p::p, space :::p, comp mouseXPositionLabel::::0:x}, seq l {comp label11:::p::p, space :::p, comp mouseYPositionLabel::::0:x}, comp label12::l:p::p}}, comp changeColorButton:::p:85:p, comp enlightenButton::l:p:85:p, comp enlightenByLogarithmButton::l:p:85:p, comp dimByPowerButton::l:p:85:p, comp dimByLogarithmButton::l:p::p, comp backToOriginalImageButton::l:p:85:p, seq l {comp maskTF00:::p:20:p, space :::p, comp maskTF10:::p:20:p, space :::p, comp maskTF20:::p:20:p}, seq l {comp maskTF01:::p:20:p, space :::p, comp maskTF11:::p:20:p, space :::p, comp maskTF21:::p:20:p}, seq l {comp maskTF02:::p:20:p, space :::p, comp maskTF12:::p:20:p, space :::p, comp maskTF22:::p:20:p}}, space ::9:x}}"
+					"$verticalGroup": "par l {seq l {space :::p, comp label9:::p::p, par l {seq {space :p:8:p, comp label10:::p::p}, seq {space :p:6:p, comp mouseXPositionLabel:::p::p}}, space :::p, par l {comp label11:::p::p, comp mouseYPositionLabel:::p::p}, space u:::p, comp label12:::p::p, space :::p, par b {comp label13::b:p::p, comp colorRTextField::b:p::p}, space :::p, par b {comp label14::b:p::p, comp colorGTextField::b:p::p}, space :::p, par b {comp label15::b:p::p, comp colorBTextField::b:p::p}, space :::p, comp changeColorButton:::p::p, space u:::p, comp enlightenButton:::p::p, space :::p, comp enlightenByLogarithmButton:::p::p, space :::p, comp dimByPowerButton:::p::p, space :::p, comp dimByLogarithmButton:::p::p, space s:::p, comp backToOriginalImageButton:::p::p, space :p:51:p, par b {comp maskTF00::b:p::p, comp maskTF10::b:p::p, comp maskTF20::b:p::p}, space :::p, par b {comp maskTF01::b:p::p, comp maskTF11::b:p::p, comp maskTF21::b:p::p}, space :::p, par b {comp maskTF02::b:p::p, comp maskTF12::b:p::p, comp maskTF22::b:p::p}, space ::250:x}}"
 				} ) {
 					name: "changeColorPanel"
 					"preferredSize": new java.awt.Dimension( 100, 0 )
@@ -84,6 +84,33 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "backToOriginalImageButton"
 						"text": "Original"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "maskTF00"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "maskTF10"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "maskTF20"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "maskTF01"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "maskTF11"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "maskTF21"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "maskTF02"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "maskTF12"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "maskTF22"
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
@@ -165,6 +192,26 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
 						name: "niblackMethod"
 						"text": "Niblack method"
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "menu3"
+					"text": "Filtration"
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "customMaskFiltration"
+						"text": "Custom Mask"
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "kuwaharaFiltration"
+						"text": "Kuwahara"
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "median3x3Filtration"
+						"text": "Median 3x3"
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "median5x5Filtration"
+						"text": "Median 5x5"
 					} )
 				} )
 			}
